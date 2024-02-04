@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            width: 350px;
+            max-width: 100%;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        input, button {
+            display: block;
+            margin: 10px 0;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        img {
+            display: block;
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+<body>
+<div id="mainbody">
+  <h1>Add Product</h1>
+    <form action="/admin/update-product" th:object="${product}" method="post" enctype="multipart/form-data">
+        <label for="name">Name:</label>
+        <input type="text" th:field="*{name}" name="name">
+
+        <label for="pic">Image:</label>
+        <input type="file" name="pic">
+        <img th:src="@{'data:image/jpeg;base64,'+${product.generateBase64Image()}}" width="150px" height="150px">
+
+        <input th:field="*{id}" type="hidden" name="id">
+
+        <label for="price">Price:</label>
+        <input type="text" th:field="*{price}" name="price">
+
+        <label for="stock">Stock:</label>
+        <input type="text" th:field="*{stock}" name="stock">
+
+        <label for="category">Category:</label>
+        <input type="text" th:field="*{category}" name="category">
+
+        <button type="submit">Update</button>
+    </form>
+    </div>
+        <a href="/admin/home"><button>Back</button></a> 
+</body>
+</html>

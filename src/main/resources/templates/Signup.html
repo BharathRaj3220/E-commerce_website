@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Signup</title>
+<style>
+body {
+	display: flex;
+	flex-direction: column; align-items : center;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: rgba(169, 52, 113, 0.8);
+}
+
+#signupbody{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	box-sizing: border-box;
+    box-shadow : 0 15px 25px rgba( 0, 0, 0, 0.6);
+	width: 500px;
+	height: 550px;
+	box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+	color:white;
+	font-family: "Harlow Solid Italic", cursive;
+	font-size: 20px;
+    font-weight: normal;
+    font-style: italic;
+    border-radius: 20px;
+    padding-bottom: 100px;
+}
+
+#inp1,#inp2,#inp3,#inp4,#inp5{
+width: 180px;
+height: 25px;
+border-radius: 5px;
+outline: none;
+border-color: transparent;
+}
+
+.btn{
+background-color: #03e9f4;
+border-radius: 5px;
+width: 120px;
+height: 30px;
+border-color: transparent;
+font-size: 18px;
+font-weight: normal;
+font-style: italic;
+cursor: pointer;
+}
+
+#btns{
+position: relative;
+top:30px;
+}
+
+a{
+text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+	<div id="signupbody">
+		<h1 th:text="${fail}"></h1>
+		<h1>Customer Signup</h1>
+		<form action="/customer/signup" th:object="${customer}" method="post">
+				<table cellspacing="17px">
+					<tr>
+						<td>Name:</th>
+						<th><input type="text" th:field="*{name}" id="inp1" name="name"></th>
+						<td th:errors="*{name}"></td>
+					</tr>
+					<tr>
+						<td>Email:</td>
+						<td><input type="email" th:field="*{email}" id="inp2" name="email"></td>
+						<td th:errors="*{email}"></td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td><input type="text" name="password" id="inp3" th:field="*{password}"></td>
+						<td th:errors="*{password}"></td>
+					</tr>
+					<tr>
+						<td>Mobile:</td>
+						<td><input type="tel" th:field="*{mobile}" id="inp4" name="mobile"></td>
+						<td th:errors="*{mobile}"></td>
+					</tr>
+					<tr>
+						<td>Date of Birth:</td>
+						<td><input type="date" th:field="*{dob}" id="inp5" name="dob"></td>
+						<td th:errors="*{dob}"></td>
+					</tr>
+					<tr>
+						<td>Gender:</td>
+						<td><input type="radio" name="gender" value="male">Male
+							<input type="radio" name="gender" value="female">Female</td>
+						<td th:errors="*{gender}"></td>
+					</tr>
+					
+					
+				</table>
+				<div id="btns">
+				<button class="btn">Signup</button>
+				<button class="btn" type="reset">Cancel</button>
+				<button class="btn"><a href="/">Back</a></button>
+				</div>
+		</form>
+		
+	</div>
+
+
+</body>
+
+</html>

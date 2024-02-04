@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<form action="/admin/add-product" method="post"   enctype="multipart/form-data"> 
+			<table>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="name"></td>
+				</tr>
+				<tr>
+					<td>Image:</td>
+					<td><input type="file" name="pic"></td>
+				</tr>
+				<tr>
+					<td>Price:</td>
+					<td><input type="text" name="price"></td>
+				</tr>
+				<tr>
+					<td>Stock:</td>
+					<td><input type="text" name="stock"></td>
+				</tr>
+				<tr>
+					<td>Category:</td>
+					<td><input type="text" name="category"></td>
+				</tr>
+			</table>
+			<button>ADD</button>
+		</form>
+		<a href="/admin/home"><button>Back</button></a>
+	</div>
+</body>
+</html>
